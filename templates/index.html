@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>E-Ink Photo Frame</title>
+</head>
+<body>
+  <h1>Upload Image</h1>
+  <form method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <button type="submit">Upload</button>
+  </form>
+
+  <h2>Available Images</h2>
+  <ul>
+    {% for image in images %}
+    <li>
+      <img src="{{ url_for('static', filename='uploads/' + image) }}" height="100">
+      <a href="{{ url_for('display', filename=image) }}">Display</a>
+    </li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
